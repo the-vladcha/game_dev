@@ -12,4 +12,7 @@ router = APIRouter(
 
 @router.post('/')
 async def get_tasks(build: Item) -> JSONResponse:
-    return JSONResponse(jsonable_encoder(TasksGenerator().get_tasks(build.build)))
+    try:
+        return JSONResponse(jsonable_encoder(TasksGenerator().get_tasks(build.build)))
+    except Exception as er:
+        return JSONResponse(content=jsonable_encoder({'error': er}), status_code=500)
