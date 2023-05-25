@@ -1,19 +1,16 @@
 import os
 
 import yaml
-from dotenv import load_dotenv
 from pydantic import BaseSettings
-
-load_dotenv()
 
 
 def read_build_data():
-    with open(os.environ['BUILDS_FILE_PATH']) as build_file:
+    with open('../builds/builds.yaml') as build_file:
         return dict([(item['name'], item['tasks']) for item in yaml.safe_load(build_file)['builds']])
 
 
 def read_tasks_data():
-    with open(os.environ['TASKS_FILE_PATH']) as tasks_file:
+    with open('../builds/tasks.yaml') as tasks_file:
         return dict([(item['name'], item['dependencies']) for item in yaml.safe_load(tasks_file)['tasks']])
 
 
