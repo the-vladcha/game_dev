@@ -5,7 +5,7 @@ docker-compose up
 ```
 
 ###Проверка сервиса:
-c помощью Postman или другим способом вызвать POST запрос с телом, например:
+c помощью Postman или другим способом вызвать POST ```http://127.0.0.1:8500/tasks/get_tasks/``` запрос с телом, например:
 ```
 {'build': 'voice_central'}
 ```
@@ -14,6 +14,6 @@ c помощью Postman или другим способом вызвать POS
 ```
 import requests
 
-req = requests.post('http://127.0.0.1:8500/tasks/get_tasks', json={'build': 'voice_central'})
+req = requests.post('http://127.0.0.1:8500/tasks/get_tasks/', json={'build': 'voice_central'})
 print(req.json())
 ```
